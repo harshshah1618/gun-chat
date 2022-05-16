@@ -39,7 +39,7 @@
     };
 
     // Get Messages
-    db.get('chat')
+    db.get('chat33')
       .map(match)
       .once(async (data, id) => {
         if (data) {
@@ -69,7 +69,7 @@
     const secret = await SEA.encrypt(newMessage, '#foo');
     const message = user.get('all').set({ what: secret });
     const index = new Date().toISOString();
-    db.get('chat').get(index).put(message);
+    db.get('chat33').get(index).put(message);
     newMessage = '';
     canAutoScroll = true;
     autoScroll();
@@ -89,7 +89,7 @@
     <form on:submit|preventDefault={sendMessage}>
       <input type="text" placeholder="Type a message..." bind:value={newMessage} maxlength="100" />
 
-      <button type="submit" disabled={!newMessage}>💥</button>
+      <button type="submit" disabled={!newMessage}>Send Message</button>
     </form>
 
 

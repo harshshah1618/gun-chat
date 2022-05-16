@@ -7,8 +7,9 @@
   }
 </script>
 
+
 <header>
-<h1>🔫💬</h1>
+<h1><center>A P2P Chat App</center></h1>
   {#if $username}
     <div class="user-bio">
       
@@ -20,6 +21,6 @@
 
     {:else}
 
-      <h3>Gun.js Chat</h3>
+      <h3><center>Powered by Gun.js</center></h3>
   {/if}
 </header>
