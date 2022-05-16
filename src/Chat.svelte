@@ -85,14 +85,14 @@
 
       <div class="dummy" bind:this={scrollBottom} />
     </main>
-
+<div class="center">
     <form on:submit|preventDefault={sendMessage}>
       <input type="text" placeholder="Type a message..." bind:value={newMessage} maxlength="100" />
 
-      <button type="submit" disabled={!newMessage}>Send Message</button>
+      <button type="submit" class='send-message' disabled={!newMessage}>Send Message</button>
     </form>
 
-
+</div>
     {#if !canAutoScroll}
     <div class="scroll-button">
       <button on:click={autoScroll} class:red={unreadMessages}>

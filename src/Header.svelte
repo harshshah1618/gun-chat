@@ -13,12 +13,12 @@
   {#if $username}
     <div class="user-bio">
       
-      <span>Hello <strong>{$username}</strong></span>
+      <span>Hello, <strong>{$username}</strong></span>
       <img src={`https://avatars.dicebear.com/api/initials/${$username}.svg`} alt="avatar" /> 
-    </div>
+    
 
-    <button class="signout-button" on:click={signout}>Sign Out</button>
-
+    <button class='signout-button' on:click={signout}>Sign Out</button>
+</div>
     {:else}
 
       <h3><center>Powered by Gun.js</center></h3>

@@ -109,7 +109,7 @@
     display: block;
     height: 4px;
     width: 100%;
-    background: #d16dff;
+    background: red;
     transform: scaleX(0);
     transform-origin: 0%;
     /* left to right  */
@@ -155,7 +155,7 @@
 
 
   .input:valid {
-    color: yellowgreen;
+    color: white;
   }
   .input:invalid {
     color: orangered;
@@ -193,10 +193,10 @@
     </div>
     </ul>
     
-    
-      <input type="button" value="Log In" class="button" on:click={login}>
-      <input type="button" value="Sign Up" class="button" on:click={signup}>
- 
+    <div class=field2>
+      <input type="button" value="Log In" class="app-button" on:click={login}>
+      <input type="button" value="Sign Up" class="app-button" on:click={signup}>
+ </div>
       
   </form>
 </main>
