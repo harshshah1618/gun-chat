@@ -4,7 +4,8 @@
   import { onMount } from 'svelte';
   import { username, user } from './user';
   import debounce from 'lodash.debounce';
-
+  import {create} from 'ipfs-http-client'
+  const client = create('https://ipfs.infura.io:5001/api/v0')
   import GUN from 'gun';
   const db = GUN();
 
@@ -74,6 +75,41 @@
     canAutoScroll = true;
     autoScroll();
   }
+
+  async function sendMessagelink(string) {
+    const secret = await SEA.encrypt(newMessage, '#foo');
+    const message = user.get('all').set({ what: secret });
+    const index = new Date().toISOString();
+    db.get('chat33').get(index).put(message);
+    newMessage = '';
+    canAutoScroll = true;
+    autoScroll();
+  }
+
+
+
+  async function test() {
+    const data2 = await document.getElementById("file").files[0];
+    
+    
+    
+
+// add your data to to IPFS - this can be a string, a Buffer,
+// a stream of Buffers, etc
+    let results = await client.add(data2);
+    
+// we loop over the results because 'add' supports multiple 
+// additions, but we only added one entry here so we only see
+// one log line in the output
+
+  // CID (Content IDentifier) uniquely addresses the data
+  // and can be used to get it again.
+  const fileHash = results.cid.string;
+
+  console.log(results)
+    }
+    
+    
 </script>
 
 <div class="container">
@@ -93,6 +129,20 @@
     </form>
 
 </div>
+
+
+<div class="center">
+  <form method="post" enctype=multipart/form-data on:submit={test}>
+    <input type="file" name="file" id="file">
+    <button type="submit" class='send-message'>Upload File</button>
+
+    
+  </form>
+
+</div>
+
+
+
     {#if !canAutoScroll}
     <div class="scroll-button">
       <button on:click={autoScroll} class:red={unreadMessages}>
